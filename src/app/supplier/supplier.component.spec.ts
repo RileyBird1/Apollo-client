@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SuppliersComponent } from './supplier.component';
+import { ActivatedRoute } from '@angular/router';
 
-import { SupplierComponent } from './supplier.component';
-
-describe('SupplierComponent', () => {
-  let component: SupplierComponent;
-  let fixture: ComponentFixture<SupplierComponent>;
+describe('SuppliersComponent', () => {
+  let component: SuppliersComponent;
+  let fixture: ComponentFixture<SuppliersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SupplierComponent]
+      imports: [SuppliersComponent],
+      providers: [{ provide: ActivatedRoute, useValue: {} }]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SupplierComponent);
+    fixture = TestBed.createComponent(SuppliersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
