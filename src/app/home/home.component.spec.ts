@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HomeComponent } from './home.component';
 import { environment } from '../../environments/environment';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 
 describe('HomeComponent', () => {
@@ -11,6 +12,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HomeComponent, HttpClientTestingModule, RouterTestingModule]
       imports: [HomeComponent, HttpClientTestingModule],
       providers: [{ provide: ActivatedRoute, useValue: {} }]
     })

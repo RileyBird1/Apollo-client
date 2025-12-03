@@ -1,3 +1,4 @@
 node_modules
+.angular/cache
 # Ignore Angular cache
 .angular/

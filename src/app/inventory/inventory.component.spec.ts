@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InventoryComponent } from './inventory.component';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 
 describe('InventoryComponent', () => {
@@ -8,6 +9,7 @@ describe('InventoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [InventoryComponent, RouterTestingModule]
       imports: [InventoryComponent],
       providers: [{ provide: ActivatedRoute, useValue: {} }]
     })
