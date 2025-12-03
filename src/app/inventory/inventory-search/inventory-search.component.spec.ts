@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { InventorySearchComponent } from './inventory-search.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; // <-- Add this
 
 describe('InventorySearchComponent', () => {
   let component: InventorySearchComponent;
@@ -8,7 +9,7 @@ describe('InventorySearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InventorySearchComponent]
+      imports: [InventorySearchComponent, RouterTestingModule, HttpClientTestingModule ]
     })
     .compileComponents();
 

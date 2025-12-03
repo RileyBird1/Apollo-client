@@ -23,4 +23,4 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     </div>
   `
 })
-export class SuppliersComponent {}
+export class SupplierComponent {}

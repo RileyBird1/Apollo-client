@@ -28,6 +28,7 @@ body {
     font-weight: 400;
     color: #fff;
     letter-spacing: 1px;
+    text-decoration: none;
 }
 /* Tabs under Apollo IMS */
 .tabs {
@@ -41,8 +42,10 @@ body {
     border: 1px solid #d0d1d6;
     border-radius: 6px;
     font-size: 0.95rem;
+    color: #1a2950;
     cursor: pointer;
     transition: 0.2s;
+    text-decoration: none;
 }
 
 .tab.active {
@@ -167,14 +170,18 @@ body {
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.2s;
+    border-left: none;
+    text-decoration: none;
+    text-align: center;
+    color: #0d2769;
 }
 
-.action-tab + .action-tab {
-    border-left: none;
-}
+
+
+   
 
 .action-tab:hover {
-    background: #eef1f7;
+    background: #d5def0;
 }
 
 .action-tab.active {
@@ -188,4 +195,14 @@ body {
     padding: 28px;
     border-bottom-left-radius: 26px;
     border-bottom-right-radius: 26px;
+}
+
+/* ===== Footer ===== */
+.footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f1f1f1;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
 }
