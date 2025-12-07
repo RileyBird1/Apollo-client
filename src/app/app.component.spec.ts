@@ -7,8 +7,6 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent, RouterTestingModule],
-      
-      imports: [AppComponent],
       providers: [{ provide: ActivatedRoute, useValue: {} }],
     }).compileComponents();
   });

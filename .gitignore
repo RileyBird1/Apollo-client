@@ -1,4 +1,11 @@
+# Node modules
 node_modules
-.angular/cache
+
 # Ignore Angular cache
-.angular/
+.angular/cache/
+
+# Build output
+dist/
+
+# Environment files
+.env
