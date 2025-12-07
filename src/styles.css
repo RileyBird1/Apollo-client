@@ -180,10 +180,6 @@ body {
     color: #0d2769;
 }
 
-
-
-   
-
 .action-tab:hover {
     background: #d5def0;
 }
@@ -214,6 +210,7 @@ body {
       position: fixed;
       bottom: 0;
       width: 100%;
+}
 /* Inventory Create Form Custom Styles */
 .inventory-create-container.card {
     flex-direction: column;

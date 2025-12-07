@@ -9,8 +9,7 @@ describe('InventoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InventoryComponent, RouterTestingModule]
-      imports: [InventoryComponent],
+      imports: [InventoryComponent, RouterTestingModule],
       providers: [{ provide: ActivatedRoute, useValue: {} }]
     })
     .compileComponents();
