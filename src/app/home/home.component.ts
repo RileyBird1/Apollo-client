@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-home',
   standalone: true,
-
+  imports: [RouterLink],
     template: `
 
 
@@ -28,7 +28,7 @@ import { environment } from '../../environments/environment';
           <span style="font-size:1.3em; vertical-align:middle; margin-right:8px;">&#9881;&#65039;</span>
           Quick Actions
         </div>
-        <button class="card-row btn">Create inventory item</button>
+        <a class="card-row btn" routerLink="/inventory/create" style="display: block; text-align: left;">Create inventory item</a>
         <button class="card-row btn">Search suppliers</button>
       </div>
     </div>
