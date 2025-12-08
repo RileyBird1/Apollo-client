@@ -9,15 +9,14 @@ import { Inventory } from '../../inventory';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   template: `
-    <div class="container">
-      <h2>Search Inventory by ID</h2>
-      <p> <strong> Note: </strong> Currently available item ID number: 100 </p>
-
+    <div class=" inventory-create-container card">
+      
+      <div class="card-header">Search an inventory item </div>
       <form [formGroup]="form" (ngSubmit)="onSearch()">
         <label for="itemId">Item ID</label>
         <input id="itemId" formControlName="itemId" placeholder="Enter item ID" />
 
-        <button type="submit">Search</button>
+        <button class= "btn" type="submit">Search</button>
       </form>
 
       <div *ngIf="errorMessage" class="error">
@@ -44,7 +43,7 @@ import { Inventory } from '../../inventory';
     input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
     button { background: #1976d2; color: white; padding: 10px; border-radius: 4px; cursor: pointer; }
     .error { color: red; margin-top: 10px; }
-    .result-card { border: 1px black solid;  padding: 15px; border-radius: 4px; margin-top: 20px; }
+    .result-card { padding: 15px; border-radius: 4px; margin-top: 20px; }
     h3{ margin-bottom: 15px; }
     p{ padding-bottom: 8px; }
   `]

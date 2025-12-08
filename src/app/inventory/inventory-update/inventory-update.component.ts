@@ -26,53 +26,63 @@ import { Inventory, UpdateInventoryDTO } from '../inventory';
       </div>
 
       <div *ngIf="inventory" class="result-card">
-        <h3>Current Details</h3>
+        <h3>Current Item Details</h3>
         <p><strong>ID:</strong> {{ inventory.itemId }}</p>
         <p><strong>Name:</strong> {{ inventory.name }}</p>
         <p><strong>Description:</strong> {{ inventory.description }}</p>
         <p><strong>Quantity:</strong> {{ inventory.quantity }}</p>
         <p><strong>Price:</strong> {{ inventory.price }}</p>
-        <p><strong>Supplier ID:</strong> {{ inventory.supplierId }}</p>
-        <p><strong>Category ID:</strong> {{ inventory.categoryId }}</p>
-        <p><strong>Date Created:</strong> {{ inventory.dateCreated }}</p>
-        <p><strong>Date Modified:</strong> {{ inventory.dateModified }}</p>
+        
+        
 
+        <!-- HIDE FORM WHEN UPDATE IS SUCCESSFUL -->
+        
+
+        <form *ngIf="showUpdateForm" [formGroup]="updateForm" (ngSubmit)="onUpdate()">
         <hr>
+          
+        <h3>Update Item Details </h3>
 
-        <h3>Update Item</h3>
-
-        <!-- Update Form -->
-        <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
           <label>Name</label>
           <input formControlName="name" />
           <br>
+
           <label>Description</label>
           <input formControlName="description" />
+          <br>
 
           <label>Quantity</label>
           <input type="number" formControlName="quantity" />
           <br>
+
           <label>Price</label>
           <input type="number" formControlName="price" />
 
           <button class="btn" type="submit">Update</button>
         </form>
 
-        <div *ngIf="updateSuccess" class="success">{{ updateSuccess }}</div>
+        <!-- Show message after form disappears -->
+        <div *ngIf="!showUpdateForm" class="success">
+          {{ updateSuccess }}
+        </div>
+
         <div *ngIf="updateError" class="error">{{ updateError }}</div>
 
       </div>
     </div>
   `,
   styles: [`
-    .error { color: red; }
-    .success { color: green; }
-    h3, p { margin-bottom: 15px; padding-left: 2rem; }
-    h3 { margin-top: 20px; }
+    .error { color: red; text-align: center; font-size: 1.2rem; margin: 2rem 0; }
+    .success { color:#244a8a; text-align: center; font-size: 1.2rem; margin: 2rem 0; }
+    p { margin-bottom: 15px; padding-left: 2rem; }
+    h3 { text-align: center; margin: 2rem 0; }
     
   `]
 })
 export class InventoryUpdateComponent {
+  // Control visibility of update form
+  showUpdateForm = true;
+
   // search form
   searchForm = this.fb.group({
     itemId: ['', Validators.required]
@@ -124,6 +134,10 @@ export class InventoryUpdateComponent {
     error: () => {
       this.inventory = null;
       this.errorMessage = 'Inventory item not found';
+      // Hide error after 5 seconds if you want
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 3000);
     }
   });
 }
@@ -133,20 +147,32 @@ export class InventoryUpdateComponent {
     if (!this.inventory) return;
 
     const updated: UpdateInventoryDTO = {
-    name: this.updateForm.value.name ?? '',
-    description: this.updateForm.value.description ?? '',
-    quantity: Number(this.updateForm.value.quantity),
-    price: Number(this.updateForm.value.price)
-  };
+      name: this.updateForm.controls['name'].value ?? '',
+      description: this.updateForm.controls['description'].value ?? '',
+      quantity: Number(this.updateForm.controls['quantity'].value),
+      price: Number(this.updateForm.controls['price'].value)
+    };
+    
 
     this.inventoryService.updateInventory(this.inventory.itemId, updated).subscribe({
       next: () => {
-        this.updateSuccess = 'Item updated successfully!';
+        this.updateSuccess = 'Item updated successfully 🎉';
         this.updateError = '';
+        this.showUpdateForm = false; // Hide the form after successful update
+
+        // Refresh item from backend automatically after 1 second
+        setTimeout(() => {
+          this.onSearch();
+        }, 1000);
       },
       error: () => {
         this.updateError = 'Failed to update item.';
         this.updateSuccess = '';
+
+        // Hide error after 5 seconds if you want
+        setTimeout(() => {
+          this.updateError = '';
+        }, 1000);
       }
     });
   }
