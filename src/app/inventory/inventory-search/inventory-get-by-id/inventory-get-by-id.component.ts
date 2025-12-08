@@ -31,6 +31,8 @@ import { Inventory } from '../../inventory';
         <p><strong>Description:</strong> {{ inventory.description }}</p>
         <p><strong>Quantity:</strong> {{ inventory.quantity }}</p>
         <p><strong>Price:</strong> {{ inventory.price }}</p>
+        <p><strong>Supplier ID:</strong> {{ inventory.supplierId }}</p>
+        <p><strong>Category ID:</strong> {{ inventory.categoryId }}</p>
         <p><strong>Date Created:</strong> {{ inventory.dateCreated }}</p>
         <p><strong>Date Modified:</strong> {{ inventory.dateModified }}</p>
       </div>
