@@ -23,8 +23,8 @@ describe('InventoryService', () => {
 
   it('should retrieve all inventories', () => {
     const dummyInventories: Inventory[] = [
-      { itemId: 1, supplierId: 1, name: 'Item 1', description: 'Desc 1', quantity: 10, price: 100, dateCreated: new Date(), dateModified: new Date() },
-      { itemId: 2, supplierId: 2, name: 'Item 2', description: 'Desc 2', quantity: 20, price: 200, dateCreated: new Date(), dateModified: new Date() }
+      { itemId: 1, categoryId: 1, supplierId: 1, name: 'Item 1', description: 'Desc 1', quantity: 10, price: 100, dateCreated: new Date(), dateModified: new Date() },
+      { itemId: 2, categoryId: 2, supplierId: 2, name: 'Item 2', description: 'Desc 2', quantity: 20, price: 200, dateCreated: new Date(), dateModified: new Date() }
     ];
     
     service.getInventories().subscribe(inventories => {
@@ -39,7 +39,10 @@ describe('InventoryService', () => {
   })
 
   it('should retrieve a single inventory by itemId', () => {
-    const dummyInventory: Inventory = { itemId: 1, supplierId: 1, name: 'Item 1', description: 'Desc 1', quantity: 10, price: 100, dateCreated: new Date(), dateModified: new Date() };
+    const dummyInventory: Inventory = {
+      itemId: 1, supplierId: 1, name: 'Item 1', description: 'Desc 1', quantity: 10, price: 100, dateCreated: new Date(), dateModified: new Date(),
+      categoryId: 0
+    };
     
     service.getInventory(1).subscribe(inventory => {
       expect(inventory).toEqual(dummyInventory);
@@ -52,7 +55,10 @@ describe('InventoryService', () => {
   });
 
   it('should add a new inventory', () => {
-    const newInventory: Inventory = { itemId: 3, supplierId: 3, name: 'Item 3', description: 'Desc 3', quantity: 30, price: 300, dateCreated: new Date(), dateModified: new Date() };
+    const newInventory: Inventory = {
+      itemId: 3, supplierId: 3, name: 'Item 3', description: 'Desc 3', quantity: 30, price: 300, dateCreated: new Date(), dateModified: new Date(),
+      categoryId: 0
+    };
     
     service.addInventory(newInventory).subscribe(inventory => {
       expect(inventory).toEqual(newInventory);
@@ -67,7 +73,10 @@ describe('InventoryService', () => {
   it('should update an existing inventory', () => {
 
     const updateInventoryDTO: UpdateInventoryDTO = { name: 'Updated Item', description: 'Updated Desc', quantity: 15, price: 150 };
-    const updatedInventory: Inventory = { itemId: 1, supplierId: 1, name: 'Updated Item', description: 'Updated Desc', quantity: 15, price: 150, dateCreated: new Date(), dateModified: new Date() };
+    const updatedInventory: Inventory = {
+      itemId: 1, supplierId: 1, name: 'Updated Item', description: 'Updated Desc', quantity: 15, price: 150, dateCreated: new Date(), dateModified: new Date(),
+      categoryId: 0
+    };
     
     service.updateInventory(1, updatedInventory).subscribe(inventory => {
       expect(inventory).toEqual(updatedInventory);

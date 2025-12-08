@@ -1,5 +1,6 @@
 export interface Inventory {
     itemId: number;
+    categoryId: number;
     supplierId: number;
     name: string;
     description: string;
@@ -9,4 +10,4 @@ export interface Inventory {
     dateModified: Date;
 }
 
-export type UpdateInventoryDTO = Omit<Inventory, 'itemId' | 'supplierId' | 'dateCreated' | 'dateModified'>;
+export type UpdateInventoryDTO = Omit<Inventory, 'itemId' | 'supplierId' | 'categoryId' | 'dateCreated' | 'dateModified'>;
