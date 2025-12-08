@@ -22,13 +22,16 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   styles: `
     h3{
       margin: 20px 12px;
+      text-align: center;
     }
     h4{
       margin-left: 12px;
+      text-align: center;
     }
     .content-wrapper {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      wrap: wrap;
       justify-content: center;
       align-items: center;
       min-height: 400px;
@@ -39,7 +42,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
       display: flex;
       flex-direction: column;
       max-width: 250px;
-      padding: 2rem;
+      padding: 1rem;
       gap: 2rem;
       margin: 12px;
       border-right: 1px solid #ccc;
