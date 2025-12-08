@@ -17,7 +17,16 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 
     <!-- ===== Routed Content Area ===== -->
     <router-outlet></router-outlet>
+
+    <!-- ===== Footer ===== -->
+    <div class="footer">
+      <p>&copy; 2025 Apollo IMS. All rights reserved.</p>
+    </div>
   `,
-  styles: []
+  styles: [
+    ``
+  ]
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'ims-client';
+}

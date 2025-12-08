@@ -7,9 +7,10 @@ import { InventorySearchComponent } from './inventory/inventory-search/inventory
 import { InventoryUpdateComponent } from './inventory/inventory-update/inventory-update.component';
 import { InventoryDeleteComponent } from './inventory/inventory-delete/inventory-delete.component';
 import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
+import { InventoryGetByIdComponent } from './inventory/inventory-search/inventory-get-by-id/inventory-get-by-id.component';
 
 
-import { SuppliersComponent } from './supplier/supplier.component';
+import { SupplierComponent } from './supplier/supplier.component';
 import { SupplierCreateComponent } from './supplier/supplier-create/supplier-create.component';
 import { SupplierSearchComponent } from './supplier/supplier-search/supplier-search.component';
 import { SupplierUpdateComponent } from './supplier/supplier-update/supplier-update.component';
@@ -26,7 +27,16 @@ export const routes: Routes = [
     component: InventoryComponent,
     children: [
       { path: 'create', component: InventoryCreateComponent },
-      { path: 'search', component: InventorySearchComponent },
+      { 
+        path: 'search', 
+        component: InventorySearchComponent,
+        children: [
+          {
+            path: 'search/get-by-id',
+            component: InventoryGetByIdComponent
+          }
+        ] 
+      },
       { path: 'update', component: InventoryUpdateComponent },
       { path: 'delete', component: InventoryDeleteComponent },
       { path: 'list', component: InventoryListComponent },
@@ -34,8 +44,8 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'suppliers',
-    component: SuppliersComponent,
+    path: 'supplier',
+    component: SupplierComponent,
     children: [
       { path: 'create', component: SupplierCreateComponent },
       { path: 'search', component: SupplierSearchComponent },
