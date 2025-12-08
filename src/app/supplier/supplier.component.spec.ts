@@ -9,6 +9,16 @@ describe('SupplierComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SupplierComponent, RouterTestingModule]
+import { SuppliersComponent } from './supplier.component';
+import { ActivatedRoute } from '@angular/router';
+
+describe('SupplierComponent', () => {
+  let component: SupplierComponent;
+  let fixture: ComponentFixture<SupplierComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [SupplierComponent, RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SupplierComponent);
