@@ -48,7 +48,7 @@ describe('InventoryGetByIdComponent', () => {
   it('should clear inventory when a new invalid search is performed', () => {
   // Set an initial valid inventory
   component.inventory = { 
-    itemId: 100, categoryId: 1000, supplierId: 1, name: 'Water Boiler', description: 'Test item', 
+  itemId: 100, categoryId: 1000, supplierId: 1, name: 'Water Boiler', description: 'Test item', 
     quantity: 10, price: 50, dateCreated: new Date(), dateModified: new Date() 
   };
 

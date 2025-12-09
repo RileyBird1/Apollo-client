@@ -8,6 +8,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   template: `
     <h3>Inventory Search</h3>
     <h4>Choose Search Method:</h4>
+<<<<<<< HEAD
     <div class ="content-wrapper">
         <div class="child-btn-group">
           <a class="child-btn" routerLink="search/get-by-id" routerLinkActive="active">Search by ID</a>
@@ -17,11 +18,23 @@ import { RouterOutlet, RouterLink } from '@angular/router';
           <router-outlet></router-outlet>
         </section>
     </div>
+=======
+   <div class ="content-wrapper">
+      <div class="child-btn-group">
+        <a class="child-btn" routerLink="search/get-by-id" routerLinkActive="active">Search by ID</a>
+       
+      </div>
+      <section class="content-area" style="margin-top: 16px;">
+        <router-outlet></router-outlet>
+      </section>
+   </div>
+>>>>>>> 7f958d9d184ceba436c83f691c422472f1d008ef
     
   `,
   styles: `
     h3{
       margin: 20px 12px;
+<<<<<<< HEAD
       text-align: center;
     }
     h4{
@@ -36,12 +49,24 @@ import { RouterOutlet, RouterLink } from '@angular/router';
       align-items: center;
       min-height: 400px;
       gap: 24px;
+=======
+    }
+    h4{
+      margin-left: 12px;
+    }
+    .content-wrapper {
+      display: flex;
+      flex-direction: row;
+      min-height: 400px;
+      gap: 24px;
+      width: 900px;
       margin-bottom: 10rem;
     }
     .child-btn-group {
       display: flex;
       flex-direction: column;
       max-width: 250px;
+<<<<<<< HEAD
       padding: 1rem;
       gap: 2rem;
       margin: 12px;

@@ -7,6 +7,7 @@ import { Inventory, UpdateInventoryDTO } from '../inventory';
 @Component({
   selector: 'app-inventory-update',
   standalone: true,
+<<<<<<< HEAD
   imports: [ReactiveFormsModule, CommonModule],
   template: `
     <br>
@@ -176,4 +177,16 @@ export class InventoryUpdateComponent {
       }
     });
   }
+=======
+  imports: [],
+  template: `
+    <p>
+      inventory-update works!
+    </p>
+  `,
+  styles: ``
+})
+export class InventoryUpdateComponent {
+
+>>>>>>> 7f958d9d184ceba436c83f691c422472f1d008ef
 }
