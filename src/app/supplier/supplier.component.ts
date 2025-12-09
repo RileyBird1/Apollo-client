@@ -12,8 +12,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
         <nav class="action-tabs" aria-label="Supplier actions">
           <a class="action-tab" routerLink="create" routerLinkActive="active">Create</a>
           <a class="action-tab" routerLink="search" routerLinkActive="active">Search</a>
-          <a class="action-tab" routerLink="update" routerLinkActive="active">Update</a>
-          <a class="action-tab" routerLink="delete" routerLinkActive="active">Delete</a>
           <a class="action-tab" routerLink="list" routerLinkActive="active">List</a>
         </nav>
         <section class="content-area">
