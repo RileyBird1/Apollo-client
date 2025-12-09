@@ -16,6 +16,14 @@ import { NgIf } from '@angular/common';
       <div class="card-header">Create Inventory Item</div>
       <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()" novalidate style="padding: 18px 24px;">
         <div class="form-group" style="margin-bottom: 16px;">
+          <label for="itemId">Item ID</label>
+          <input id="itemId" type="number" formControlName="itemId" class="form-control" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #c7d0e0; margin-top: 4px;" />
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="categoryId">Category ID</label>
+          <input id="categoryId" type="number" formControlName="categoryId" class="form-control" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #c7d0e0; margin-top: 4px;" />
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
           <label for="supplierId">Supplier ID</label>
           <input id="supplierId" type="number" formControlName="supplierId" class="form-control" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #c7d0e0; margin-top: 4px;" />
         </div>
@@ -55,6 +63,8 @@ export class InventoryCreateComponent {
   constructor(private fb: FormBuilder, private http: HttpClient) {
     // Initialize the form with all required fields
     this.inventoryForm = this.fb.group({
+      itemId: ['', [Validators.required, Validators.min(1)]],
+      categoryId: ['', [Validators.required, Validators.min(1)]],
       supplierId: ['', Validators.required],
       name: ['', Validators.required],
       description: [''],
