@@ -16,7 +16,7 @@ import { Inventory } from '../../inventory';
         <label for="itemId">Item ID</label>
         <input id="itemId" formControlName="itemId" placeholder="Enter item ID" />
 
-  <button class= "btn" type="submit">Search</button>
+        <button class= "btn" type="submit">Search</button>
       </form>
 
       <div *ngIf="errorMessage" class="error">
@@ -30,8 +30,8 @@ import { Inventory } from '../../inventory';
         <p><strong>Description:</strong> {{ inventory.description }}</p>
         <p><strong>Quantity:</strong> {{ inventory.quantity }}</p>
         <p><strong>Price:</strong> {{ inventory.price }}</p>
-  <p><strong>Supplier ID:</strong> {{ inventory.supplierId }}</p>
-  <p><strong>Category ID:</strong> {{ inventory.categoryId }}</p>
+        <p><strong>Supplier ID:</strong> {{ inventory.supplierId }}</p>
+        <p><strong>Category ID:</strong> {{ inventory.categoryId }}</p>
         <p><strong>Date Created:</strong> {{ inventory.dateCreated }}</p>
         <p><strong>Date Modified:</strong> {{ inventory.dateModified }}</p>
       </div>
@@ -43,11 +43,9 @@ import { Inventory } from '../../inventory';
     input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
     button { background: #1976d2; color: white; padding: 10px; border-radius: 4px; cursor: pointer; }
     .error { color: red; margin-top: 10px; }
-<<<<<<< HEAD
-    .result-card { padding: 15px; border-radius: 4px; margin-top: 20px; }
-=======
     .result-card { border: 1px black solid;  padding: 15px; border-radius: 4px; margin-top: 20px; }
->>>>>>> 7f958d9d184ceba436c83f691c422472f1d008ef
+=======
+    .result-card { padding: 15px; border-radius: 4px; margin-top: 20px; }
     h3{ margin-bottom: 15px; }
     p{ padding-bottom: 8px; }
   `]

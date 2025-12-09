@@ -23,8 +23,8 @@ describe('InventoryService', () => {
 
   it('should retrieve all inventories', () => {
     const dummyInventories: Inventory[] = [
-  { itemId: 1, categoryId: 1, supplierId: 1, name: 'Item 1', description: 'Desc 1', quantity: 10, price: 100, dateCreated: new Date(), dateModified: new Date() },
-  { itemId: 2, categoryId: 2, supplierId: 2, name: 'Item 2', description: 'Desc 2', quantity: 20, price: 200, dateCreated: new Date(), dateModified: new Date() }
+      { itemId: 1, categoryId: 1, supplierId: 1, name: 'Item 1', description: 'Desc 1', quantity: 10, price: 100, dateCreated: new Date(), dateModified: new Date() },
+      { itemId: 2, categoryId: 2, supplierId: 2, name: 'Item 2', description: 'Desc 2', quantity: 20, price: 200, dateCreated: new Date(), dateModified: new Date() }
     ];
     
     service.getInventories().subscribe(inventories => {
@@ -55,15 +55,11 @@ describe('InventoryService', () => {
   });
 
   it('should add a new inventory', () => {
-<<<<<<< HEAD
     const newInventory: Inventory = {
       itemId: 3, supplierId: 3, name: 'Item 3', description: 'Desc 3', quantity: 30, price: 300, dateCreated: new Date(), dateModified: new Date(),
       categoryId: 0
     };
-=======
-    const newInventory: Inventory = { itemId: 3, supplierId: 3, name: 'Item 3', description: 'Desc 3', quantity: 30, price: 300, dateCreated: new Date(), dateModified: new Date() };
->>>>>>> 7f958d9d184ceba436c83f691c422472f1d008ef
-    
+
     service.addInventory(newInventory).subscribe(inventory => {
       expect(inventory).toEqual(newInventory);
     });
@@ -77,14 +73,10 @@ describe('InventoryService', () => {
   it('should update an existing inventory', () => {
 
     const updateInventoryDTO: UpdateInventoryDTO = { name: 'Updated Item', description: 'Updated Desc', quantity: 15, price: 150 };
-<<<<<<< HEAD
     const updatedInventory: Inventory = {
       itemId: 1, supplierId: 1, name: 'Updated Item', description: 'Updated Desc', quantity: 15, price: 150, dateCreated: new Date(), dateModified: new Date(),
       categoryId: 0
     };
-=======
-    const updatedInventory: Inventory = { itemId: 1, supplierId: 1, name: 'Updated Item', description: 'Updated Desc', quantity: 15, price: 150, dateCreated: new Date(), dateModified: new Date() };
->>>>>>> 7f958d9d184ceba436c83f691c422472f1d008ef
     
     service.updateInventory(1, updatedInventory).subscribe(inventory => {
       expect(inventory).toEqual(updatedInventory);
