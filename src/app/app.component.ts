@@ -11,7 +11,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       <a class="logo" routerLink="/">Apollo IMS</a>
       <div class="tabs">
         <a class="tab" routerLink="/inventory" routerLinkActive="active">Inventory</a>
-        <a class="tab" routerLink="/suppliers" routerLinkActive="active">Suppliers</a>
+        <a class="tab" routerLink="/supplier" routerLinkActive="active">Suppliers</a>
       </div>
     </div>
 
