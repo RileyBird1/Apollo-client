@@ -17,12 +17,34 @@ import { RouterOutlet, RouterLink } from '@angular/router';
           <router-outlet></router-outlet>
         </section>
     </div>
+   <div class ="content-wrapper">
+      <div class="child-btn-group">
+        <a class="child-btn" routerLink="search/get-by-id" routerLinkActive="active">Search by ID</a>
+       
+      </div>
+      <section class="content-area" style="margin-top: 16px;">
+        <router-outlet></router-outlet>
+      </section>
+   </div>
     
   `,
   styles: `
     h3{
       margin: 20px 12px;
       text-align: center;
+    }
+    h4{
+      margin-left: 12px;
+      text-align: center;
+    }
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+      gap: 24px;
     }
     h4{
       margin-left: 12px;

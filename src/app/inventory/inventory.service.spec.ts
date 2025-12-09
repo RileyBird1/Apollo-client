@@ -59,7 +59,7 @@ describe('InventoryService', () => {
       itemId: 3, supplierId: 3, name: 'Item 3', description: 'Desc 3', quantity: 30, price: 300, dateCreated: new Date(), dateModified: new Date(),
       categoryId: 0
     };
-    
+
     service.addInventory(newInventory).subscribe(inventory => {
       expect(inventory).toEqual(newInventory);
     });

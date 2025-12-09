@@ -29,7 +29,7 @@ import { environment } from '../../environments/environment';
           Quick Actions
         </div>
         <a class="card-row btn" routerLink="/inventory/create" style="display: block; text-align: left;">Create inventory item</a>
-        <button class="card-row btn">Search suppliers</button>
+  <a class="card-row btn" routerLink="/supplier/search" style="display: block; text-align: left;">Search suppliers</a>
       </div>
     </div>
     `,
