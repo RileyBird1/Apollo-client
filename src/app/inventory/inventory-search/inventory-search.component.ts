@@ -17,15 +17,6 @@ import { RouterOutlet, RouterLink } from '@angular/router';
           <router-outlet></router-outlet>
         </section>
     </div>
-   <div class ="content-wrapper">
-      <div class="child-btn-group">
-        <a class="child-btn" routerLink="search/get-by-id" routerLinkActive="active">Search by ID</a>
-       
-      </div>
-      <section class="content-area" style="margin-top: 16px;">
-        <router-outlet></router-outlet>
-      </section>
-   </div>
     
   `,
   styles: `
