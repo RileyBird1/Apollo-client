@@ -16,6 +16,8 @@ import { SupplierSearchComponent } from './supplier/supplier-search/supplier-sea
 import { SupplierUpdateComponent } from './supplier/supplier-update/supplier-update.component';
 import { SupplierDeleteComponent } from './supplier/supplier-delete/supplier-delete.component';
 import { SupplierListComponent } from './supplier/supplier-list/supplier-list.component';
+import { SupplierGetByIdComponent } from './supplier/supplier-search/supplier-get-by-id/supplier-get-by-id.component';
+
 
 export const routes: Routes = [
   {
@@ -48,7 +50,16 @@ export const routes: Routes = [
     component: SupplierComponent,
     children: [
       { path: 'create', component: SupplierCreateComponent },
-      { path: 'search', component: SupplierSearchComponent },
+      { 
+        path: 'search', 
+        component: SupplierSearchComponent,
+        children: [
+          {
+            path: 'search/get-by-id',
+            component: SupplierGetByIdComponent
+          }
+        ] 
+      },
       { path: 'update', component: SupplierUpdateComponent },
       { path: 'delete', component: SupplierDeleteComponent },
       { path: 'list', component: SupplierListComponent },
