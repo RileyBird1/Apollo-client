@@ -6,6 +6,8 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
+  selector: 'app-inventory-list',
+  standalone: true,
   imports: [RouterLink, CommonModule],
   template: `
     <div class="inventory-page">
@@ -34,7 +36,7 @@ import { Router } from '@angular/router';
                  <td class="inventory-page__table-cell">{{inventory.supplierId}}</td>
                  <td class="inventory-page__table-cell">{{inventory.quantity}}</td>
                  <td class="inventory-page__table-cell">{{inventory.price | currency}}</td>
-                 <td class="inventory-page__table-cell">{{inventory.dateCreated | date:'mediumDate'}}}</td> 
+                 <td class="inventory-page__table-cell">{{inventory.dateCreated | date:'mediumDate'}}</td> 
                  <td class="inventory-page__table-cell">
                   <button type="button" (click)="updateInventory(inventory.itemId)" class="inventory-page__icon-button" type="button"  aria-label="Update Inventory" title="update" >
                     <i class="fas fa-edit"></i>
@@ -143,5 +145,4 @@ export class InventoryListComponent {
       this.serverMessageType = null;
     }, 5000);
   }
-}
 }
