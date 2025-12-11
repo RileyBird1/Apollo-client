@@ -53,23 +53,39 @@ describe("InventoryService", () => {
 
   it("should retrieve a single supplier by supplierId", () => {
     const dummySupplier: Supplier = {
-      itemId: 1,
-      supplierId: 1,
-      name: "Item 1",
-      description: "Desc 1",
-      quantity: 10,
-      price: 100,
-      dateCreated: new Date(),
-      dateModified: new Date(),
-      categoryId: 0,
+        supplierId: 1,
+        supplierName: "Supplier 1",
+        contactInformation: "123-456-7890",
+        address: "ABC Main St",
+        dateCreated: new Date(),
+        dateModified: new Date(),
     };
 
-    service.getInventory(1).subscribe((inventory) => {
-      expect(inventory).toEqual(dummyInventory);
+    service.getSupplier(1).subscribe((supplier) => {
+      expect(supplier).toEqual(dummySupplier);
     });
 
-    const req = httpMock.expectOne(`${environment.apiBaseUrl}/api/inventory/1`);
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/api/supplier/1`);
     expect(req.request.method).toBe("GET");
-    req.flush(dummyInventory);
+    req.flush(dummySupplier);
+  });
+
+  it("should add a new supplier", () => {
+    const newSupplier: Supplier = {
+        supplierId: 1,
+        supplierName: "Supplier 1",
+        contactInformation: "123-456-7890",
+        address: "ABC Main St",
+        dateCreated: new Date(),
+        dateModified: new Date(),
+    };
+
+    service.addSupplier(newSupplier).subscribe((supplier) => {
+      expect(supplier).toEqual(newSupplier);
+    });
+
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/api/supplier`);
+    expect(req.request.method).toBe("POST");
+    req.flush(newSupplier);
   });
 });
