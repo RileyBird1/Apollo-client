@@ -1,3 +1,9 @@
+/**
+ * supplier-search.component.ts
+ * Component for searching suppliers in Apollo IMS client.
+ * Displays search form and results (to be implemented).
+ */
+
 import { Component } from '@angular/core';
 
 @Component({

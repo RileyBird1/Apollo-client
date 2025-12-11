@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
           placeholder="Enter item ID"
         />
 
-        <button class="btn" type="submit">Search</button>
+        <button class= "btn" type="submit">Search</button>
       </form>
 
       <div *ngIf="errorMessage" class="error">
@@ -37,6 +37,8 @@ import { Router } from '@angular/router';
         <p><strong>Description:</strong> {{ inventory.description }}</p>
         <p><strong>Quantity:</strong> {{ inventory.quantity }}</p>
         <p><strong>Price:</strong> {{ inventory.price }}</p>
+        
+        
 
         <!-- HIDE FORM WHEN UPDATE IS SUCCESSFUL -->
 
@@ -59,7 +61,7 @@ import { Router } from '@angular/router';
 
           <label>Quantity</label>
           <input type="number" formControlName="quantity" />
-          <br />
+          <br>
 
           <label>Price</label>
           <input type="number" formControlName="price" />
@@ -73,9 +75,7 @@ import { Router } from '@angular/router';
         </div>
 
         <div *ngIf="updateError" class="error">{{ updateError }}</div>
-      </div>
-    </div>
-  `,
+
   styles: [
     `
       .error {
@@ -100,6 +100,7 @@ import { Router } from '@angular/router';
       }
     `,
   ],
+
 })
 export class InventoryUpdateComponent {
   // Control visibility of update form
@@ -107,20 +108,39 @@ export class InventoryUpdateComponent {
 
   // search form
   searchForm = this.fb.group({
-    itemId: ["", Validators.required],
+    itemId: ['', Validators.required]
   });
 
   // update form
   updateForm = this.fb.group({
-    name: [""],
-    description: [""],
-    quantity: [""],
-    price: [""],
+    name: [''],
+    description: [''],
+    quantity: [''],
+    price: ['']
   });
 
   inventory: Inventory | null = null;
   errorMessage = "";
 
+  onSearch() {
+  const rawValue = this.searchForm.get('itemId')?.value;
+
+  if (!rawValue || isNaN(Number(rawValue))) {
+    this.errorMessage = 'Please enter a valid numeric item ID';
+    this.inventory = null;
+    return;
+  }
+
+  const itemId = Number(rawValue);
+
+  this.inventoryService.getInventory(itemId).subscribe({
+    next: (data: Inventory) => {
+      this.inventory = data;
+      this.errorMessage = '';
+      this.updateSuccess = '';
+      this.updateError = '';
+
+      this.updateForm.patchValue({
   // update result messages
   updateSuccess = "";
   updateError = "";
@@ -141,11 +161,46 @@ export class InventoryUpdateComponent {
         this.updateError = "";
 
         this.updateForm.patchValue({
+
           name: data.name,
           description: data.description,
           quantity: data.quantity.toString(),
           price: data.price.toString(),
         });
+    },
+    error: () => {
+      this.inventory = null;
+      this.errorMessage = 'Inventory item not found';
+      // Hide error after 5 seconds if you want
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 3000);
+    }
+  });
+}
+
+  // NEW: update method
+  onUpdate() {
+    if (!this.inventory) return;
+
+    const updated: UpdateInventoryDTO = {
+      name: this.updateForm.controls['name'].value ?? '',
+      description: this.updateForm.controls['description'].value ?? '',
+      quantity: Number(this.updateForm.controls['quantity'].value),
+      price: Number(this.updateForm.controls['price'].value)
+    };
+    
+
+    this.inventoryService.updateInventory(this.inventory.itemId, updated).subscribe({
+      next: () => {
+        this.updateSuccess = 'Item updated successfully 🎉';
+        this.updateError = '';
+        this.showUpdateForm = false; // Hide the form after successful update
+
+        // Refresh item from backend automatically after 1 second
+        setTimeout(() => {
+          this.onSearch();
+        }, 1000);
       },
       error: () => {
         this.inventory = null;
@@ -167,6 +222,7 @@ export class InventoryUpdateComponent {
       return;
     }
 
+  // NEW: update method
     this.loadItem(Number(rawValue));
   }
 
@@ -175,10 +231,10 @@ export class InventoryUpdateComponent {
     if (!this.inventory) return;
 
     const updated: UpdateInventoryDTO = {
-      name: this.updateForm.controls["name"].value ?? "",
-      description: this.updateForm.controls["description"].value ?? "",
-      quantity: Number(this.updateForm.controls["quantity"].value),
-      price: Number(this.updateForm.controls["price"].value),
+      name: this.updateForm.controls['name'].value ?? '',
+      description: this.updateForm.controls['description'].value ?? '',
+      quantity: Number(this.updateForm.controls['quantity'].value),
+      price: Number(this.updateForm.controls['price'].value)
     };
 
     this.inventoryService
@@ -210,6 +266,14 @@ export class InventoryUpdateComponent {
     this.route.queryParams.subscribe((params) => {
       const id = params["itemId"];
 
+        // Hide error after 5 seconds if you want
+        setTimeout(() => {
+          this.updateError = '';
+        }, 1000);
+      }
+    });
+  }
+}
       if (id && !isNaN(Number(id))) {
         this.searchForm.patchValue({ itemId: id });
         this.loadItem(Number(id));
@@ -218,3 +282,4 @@ export class InventoryUpdateComponent {
   }
 }
   
+

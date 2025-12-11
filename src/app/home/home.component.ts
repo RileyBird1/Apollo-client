@@ -3,6 +3,11 @@ import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
+/**
+ * home.component.ts
+ * Home page component for Apollo IMS client.
+ * Displays notifications and quick actions for users.
+ */
 @Component({
   selector: 'app-home',
   standalone: true,

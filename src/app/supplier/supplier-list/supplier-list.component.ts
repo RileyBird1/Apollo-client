@@ -1,3 +1,9 @@
+/**
+ * supplier-list.component.ts
+ * Component for listing suppliers in Apollo IMS client.
+ * Displays supplier list (to be implemented).
+ */
+
 import { Component } from '@angular/core';
 
 @Component({

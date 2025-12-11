@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { InventoryService } from '../inventory.service';
-import { Inventory } from '../inventory'
+import { Inventory } from '../inventory';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';

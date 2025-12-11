@@ -5,6 +5,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterLink, RouterOutlet],
+  /**
+   * app.component.ts
+   * Root Angular component for Apollo IMS client.
+   * Handles main layout, navigation, and routed content.
+   */
   template: `
     <!-- ===== Top Bar ===== -->
     <div class="topbar">
