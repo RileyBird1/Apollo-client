@@ -16,8 +16,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
         <section class="content-area" style="margin-top: 16px;">
           <router-outlet></router-outlet>
         </section>
-    </div>
-    
+    </div>    
   `,
   styles: `
     h3{

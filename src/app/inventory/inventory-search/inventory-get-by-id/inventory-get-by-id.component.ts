@@ -42,7 +42,7 @@ import { Inventory } from '../../inventory';
     form { display: flex; flex-direction: column; gap: 12px; margin-top: 20px;}
     input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
     button { background: #1976d2; color: white; padding: 10px; border-radius: 4px; cursor: pointer; }
-    .error { color: red; margin: 2rem; text-align: center; }
+    .error { color: red; margin-top: 10px; }
     .result-card { padding: 15px; border-radius: 4px; margin-top: 20px; }
     h3{ margin-bottom: 15px; }
     p{ padding-bottom: 8px; }

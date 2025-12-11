@@ -30,6 +30,11 @@ export const routes: Routes = [
     children: [
       { path: 'create', component: InventoryCreateComponent },
       { 
+        /**
+         * app.routes.ts
+         * Defines Angular application routes for Apollo IMS client.
+         * Includes inventory and supplier feature routes and child routes.
+         */
         path: 'search', 
         component: InventorySearchComponent,
         children: [
