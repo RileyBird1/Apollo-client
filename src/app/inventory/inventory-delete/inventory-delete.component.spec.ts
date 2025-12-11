@@ -34,7 +34,7 @@ describe('InventoryDeleteComponent', () => {
   it('should show success message on successful delete', () => {
     component.deleteForm.setValue({ itemId: 123 });
     component.onSubmit();
-    const req = httpMock.expectOne('/api/inventory/123');
+    const req = httpMock.expectOne('http://localhost:3000/api/inventory/123');
     expect(req.request.method).toBe('DELETE');
     req.flush({ message: 'Item deleted' });
     expect(component.responseMessage).toBe('Item deleted');
@@ -43,7 +43,7 @@ describe('InventoryDeleteComponent', () => {
   it('should show error message on failed delete', () => {
     component.deleteForm.setValue({ itemId: 999 });
     component.onSubmit();
-    const req = httpMock.expectOne('/api/inventory/999');
+    const req = httpMock.expectOne('http://localhost:3000/api/inventory/999');
     expect(req.request.method).toBe('DELETE');
     req.flush({ error: 'Not found' }, { status: 404, statusText: 'Not Found' });
     expect(component.responseMessage).toContain('Not found');

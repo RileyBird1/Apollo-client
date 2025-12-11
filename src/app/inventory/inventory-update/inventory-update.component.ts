@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InventoryService } from '../inventory.service';
 import { CommonModule } from '@angular/common';
 import { Inventory, UpdateInventoryDTO } from '../inventory';
+<<<<<<< HEAD
 
 @Component({
   selector: 'app-inventory-update',
@@ -19,6 +20,29 @@ import { Inventory, UpdateInventoryDTO } from '../inventory';
         <input id="itemId" formControlName="itemId" placeholder="Enter item ID" />
 
         <button class= "btn" type="submit">Search</button>
+=======
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: "app-inventory-update",
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
+  template: `
+    <br />
+    <br />
+    <div class=" inventory-create-container card">
+      <div class="card-header">Search an inventory item to update</div>
+      <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <label for="itemId">Item ID</label>
+        <input
+          id="itemId"
+          formControlName="itemId"
+          placeholder="Enter item ID"
+        />
+
+        <button class="btn" type="submit">Search</button>
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
       </form>
 
       <div *ngIf="errorMessage" class="error">
@@ -32,6 +56,7 @@ import { Inventory, UpdateInventoryDTO } from '../inventory';
         <p><strong>Description:</strong> {{ inventory.description }}</p>
         <p><strong>Quantity:</strong> {{ inventory.quantity }}</p>
         <p><strong>Price:</strong> {{ inventory.price }}</p>
+<<<<<<< HEAD
         
         
 
@@ -54,6 +79,31 @@ import { Inventory, UpdateInventoryDTO } from '../inventory';
           <label>Quantity</label>
           <input type="number" formControlName="quantity" />
           <br>
+=======
+
+        <!-- HIDE FORM WHEN UPDATE IS SUCCESSFUL -->
+
+        <form
+          *ngIf="showUpdateForm"
+          [formGroup]="updateForm"
+          (ngSubmit)="onUpdate()"
+        >
+          <hr />
+
+          <h3>Update Item Details</h3>
+
+          <label>Name</label>
+          <input formControlName="name" />
+          <br />
+
+          <label>Description</label>
+          <input formControlName="description" />
+          <br />
+
+          <label>Quantity</label>
+          <input type="number" formControlName="quantity" />
+          <br />
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
 
           <label>Price</label>
           <input type="number" formControlName="price" />
@@ -67,6 +117,7 @@ import { Inventory, UpdateInventoryDTO } from '../inventory';
         </div>
 
         <div *ngIf="updateError" class="error">{{ updateError }}</div>
+<<<<<<< HEAD
 
       </div>
     </div>
@@ -78,6 +129,35 @@ import { Inventory, UpdateInventoryDTO } from '../inventory';
     h3 { text-align: center; margin: 2rem 0; }
     
   `]
+=======
+      </div>
+    </div>
+  `,
+  styles: [
+    `
+      .error {
+        color: red;
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 2rem 0;
+      }
+      .success {
+        color: #244a8a;
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 2rem 0;
+      }
+      p {
+        margin-bottom: 15px;
+        padding-left: 2rem;
+      }
+      h3 {
+        text-align: center;
+        margin: 2rem 0;
+      }
+    `,
+  ],
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
 })
 export class InventoryUpdateComponent {
   // Control visibility of update form
@@ -85,11 +165,16 @@ export class InventoryUpdateComponent {
 
   // search form
   searchForm = this.fb.group({
+<<<<<<< HEAD
     itemId: ['', Validators.required]
+=======
+    itemId: ["", Validators.required],
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
   });
 
   // update form
   updateForm = this.fb.group({
+<<<<<<< HEAD
     name: [''],
     description: [''],
     quantity: [''],
@@ -125,11 +210,43 @@ export class InventoryUpdateComponent {
       this.updateError = '';
 
       this.updateForm.patchValue({
+=======
+    name: [""],
+    description: [""],
+    quantity: [""],
+    price: [""],
+  });
+
+  inventory: Inventory | null = null;
+  errorMessage = "";
+
+  // update result messages
+  updateSuccess = "";
+  updateError = "";
+
+  constructor(
+    private fb: FormBuilder,
+    private inventoryService: InventoryService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  private loadItem(itemId: number) {
+    this.inventoryService.getInventory(itemId).subscribe({
+      next: (data: Inventory) => {
+        this.inventory = data;
+        this.errorMessage = "";
+        this.updateSuccess = "";
+        this.updateError = "";
+
+        this.updateForm.patchValue({
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
           name: data.name,
           description: data.description,
           quantity: data.quantity.toString(),
           price: data.price.toString(),
         });
+<<<<<<< HEAD
     },
     error: () => {
       this.inventory = null;
@@ -311,10 +428,38 @@ export class InventoryUpdateComponent {
 }
 
   // NEW: update method
+=======
+      },
+      error: () => {
+        this.inventory = null;
+        this.errorMessage = "Inventory item not found";
+
+        setTimeout(() => {
+          this.errorMessage = "";
+        }, 3000);
+      },
+    });
+  }
+
+  onSearch() {
+    const rawValue = this.searchForm.get("itemId")?.value;
+
+    if (!rawValue || isNaN(Number(rawValue))) {
+      this.errorMessage = "Please enter a valid numeric item ID";
+      this.inventory = null;
+      return;
+    }
+
+    this.loadItem(Number(rawValue));
+  }
+
+  // update method
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
   onUpdate() {
     if (!this.inventory) return;
 
     const updated: UpdateInventoryDTO = {
+<<<<<<< HEAD
       name: this.updateForm.controls['name'].value ?? '',
       description: this.updateForm.controls['description'].value ?? '',
       quantity: Number(this.updateForm.controls['quantity'].value),
@@ -341,7 +486,51 @@ export class InventoryUpdateComponent {
         setTimeout(() => {
           this.updateError = '';
         }, 1000);
+=======
+      name: this.updateForm.controls["name"].value ?? "",
+      description: this.updateForm.controls["description"].value ?? "",
+      quantity: Number(this.updateForm.controls["quantity"].value),
+      price: Number(this.updateForm.controls["price"].value),
+    };
+
+    this.inventoryService
+      .updateInventory(this.inventory.itemId, updated)
+      .subscribe({
+        next: () => {
+          this.updateSuccess = "Item updated successfully 🎉";
+          this.updateError = "";
+          this.showUpdateForm = false; // Hide the form after successful update
+
+          // Refresh item from backend automatically after 1 second
+          setTimeout(() => {
+            this.onSearch();
+          }, 1000);
+        },
+        error: () => {
+          this.updateError = "Failed to update item.";
+          this.updateSuccess = "";
+
+          // Hide error after 5 seconds if you want
+          setTimeout(() => {
+            this.updateError = "";
+          }, 1000);
+        },
+      });
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      const id = params["itemId"];
+
+      if (id && !isNaN(Number(id))) {
+        this.searchForm.patchValue({ itemId: id });
+        this.loadItem(Number(id));
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
       }
     });
   }
 }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)

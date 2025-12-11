@@ -17,6 +17,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
           <router-outlet></router-outlet>
         </section>
     </div>
+<<<<<<< HEAD
    <div class ="content-wrapper">
       <div class="child-btn-group">
         <a class="child-btn" routerLink="search/get-by-id" routerLinkActive="active">Search by ID</a>
@@ -26,6 +27,8 @@ import { RouterOutlet, RouterLink } from '@angular/router';
         <router-outlet></router-outlet>
       </section>
    </div>
+=======
+>>>>>>> 85b9365 (Add comments and documentation to all Angular component files and update client code)
     
   `,
   styles: `

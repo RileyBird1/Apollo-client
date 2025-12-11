@@ -28,6 +28,8 @@ describe('InventoryCreateComponent', () => {
   // Test 2: Should send POST request and show success message
   it('should create inventory item and show success message', () => {
     component.inventoryForm.setValue({
+      itemId: 1,
+      categoryId: 1,
       supplierId: 1,
       name: 'Test Item',
       description: 'Test Description',
@@ -44,6 +46,8 @@ describe('InventoryCreateComponent', () => {
   // Test 3: Should show error message on failed creation
   it('should show error message if API fails', () => {
     component.inventoryForm.setValue({
+      itemId: 1,
+      categoryId: 1,
       supplierId: 1,
       name: 'Test Item',
       description: 'Test Description',
