@@ -1,10 +1,9 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InventoryGetByIdComponent } from './inventory-get-by-id.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing'; // <-- Add this
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 import { InventoryService } from '../../inventory.service';
-import { of, throwError } from 'rxjs';
-import { Inventory } from '../../inventory';
+
 
 describe('InventoryGetByIdComponent', () => {
   let component: InventoryGetByIdComponent;
