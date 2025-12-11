@@ -1,0 +1,316 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+    background: #f5f6fa;
+    color: #222;
+}
+
+/* ===== Top Bar ===== */
+.topbar {
+    width: 100%;
+    background: linear-gradient(90deg, #1a2950 0%, #244a8a 100%);
+    padding: 28px 40px 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #102040;
+    box-shadow: 0 4px 18px rgba(26,41,80,0.10);
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+/* Tabs under Apollo IMS */
+.tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.tab {
+    padding: 8px 18px;
+    background: #e8e9ef;
+    border: 1px solid #d0d1d6;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #1a2950;
+    cursor: pointer;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.tab.active {
+    background: #2e5aac;
+    color: white;
+    border-color: #244a8a;
+}
+
+.tab:hover {
+    background: #d9dbe2;
+}
+
+/* ===== Page Layout ===== */
+.content {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* ===== Card Boxes ===== */
+.card {
+    width: 340px;
+    min-height: 260px;
+    background: linear-gradient(135deg, #fafdff 0%, #f1f4fa 100%);
+    border: 1.5px solid #c7d0e0;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(46, 90, 172, 0.10), 0 1.5px 6px rgba(44, 62, 80, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 12px 36px rgba(46, 90, 172, 0.16), 0 2px 8px rgba(44, 62, 80, 0.06);
+}
+
+
+.card-header {
+    background: linear-gradient(90deg, #1a2950 0%, #244a8a 100%);
+    padding: 20px 24px 16px 24px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1.5px solid #244a8a;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    letter-spacing: 0.5px;
+    min-width: 100%;
+    margin-right: 0;
+    margin-bottom: 0;
+    align-self: flex-start;
+}
+
+.card-row {
+    padding: 18px 24px;
+    border-bottom: 1px solid #e3e9f3;
+    font-size: 1.08rem;
+    color: #34495e;
+}
+
+/* Last row shouldn't have a bottom border */
+.card-row:last-child {
+    border-bottom: none;
+}
+
+/* Buttons inside card */
+.btn {
+    width: 100%;
+    text-align: left;
+    background: linear-gradient(90deg, #fafdff 0%, #eaf1fb 100%);
+    color: #1a2950;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 14px 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(46, 90, 172, 0.04);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #e3e9f3 0%, #fafdff 100%);
+    color: #1a2950;
+    box-shadow: 0 4px 16px rgba(46, 90, 172, 0.10);
+}
+
+/* ===== Container holding the Create/Search/Update/Delete/List box ===== */
+.page-body {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+/* ===== Rounded big panel ===== */
+.action-card {
+    width: 80%;
+    background: linear-gradient(135deg, #fafdff 0%, #f1f4fa 100%);
+    border: 1.5px solid #c7d0e0;
+    border-radius: 26px;
+    padding-top: 0;
+    box-shadow: 0 8px 28px rgba(46, 90, 172, 0.08);
+}
+
+/* ===== The horizontal row of action tabs ===== */
+.action-tabs {
+    display: flex;
+    border-bottom: 1.5px solid #c7d0e0;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+    overflow: hidden;
+}
+
+/* ===== Individual buttons inside the tab bar ===== */
+.action-tab {
+    flex: 1;
+    padding: 14px 0;
+    background: #ffffff;
+    border: 1px solid #d0d1d6;
+    border-top: none;
+    border-bottom: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s;
+    border-left: none;
+    text-decoration: none;
+    text-align: center;
+    color: #0d2769;
+}
+
+.action-tab:hover {
+    background: #d5def0;
+}
+
+.action-tab.active {
+    background: #2e5aac;
+    color: #fff;
+}
+
+/* Remove underline from all tab links in inventory and suppliers sections */
+.action-tab[routerLink] {
+    text-decoration: none;
+}
+
+/* ===== Content area inside the rounded rectangle ===== */
+.action-content {
+    min-height: 380px;
+    padding: 28px;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+}
+
+/* ===== Footer ===== */
+.footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f1f1f1;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+}
+/* Inventory Create Form Custom Styles */
+.inventory-create-container.card {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 540px;
+    min-width: 340px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    box-shadow: 0 8px 32px rgba(46, 90, 172, 0.10), 0 1.5px 6px rgba(44, 62, 80, 0.04);
+}
+
+.inventory-create-container .card-header {
+    background: linear-gradient(90deg, #1a2950 0%, #244a8a 100%);
+    padding: 28px 32px 20px 32px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 2px solid #244a8a;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    letter-spacing: 0.5px;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.inventory-create-container form {
+    width: 100%;
+    padding: 28px 32px 24px 32px;
+    box-sizing: border-box;
+}
+
+.inventory-create-container .form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.inventory-create-container label {
+    flex: 1 1 35%;
+    margin-right: 18px;
+    font-weight: 500;
+    color: #244a8a;
+    font-size: 1.05rem;
+}
+
+.inventory-create-container input {
+    flex: 2 1 65%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1.5px solid #c7d0e0;
+    font-size: 1.05rem;
+    background: #fafdff;
+    transition: border 0.2s;
+}
+
+.inventory-create-container input:focus {
+    border-color: #244a8a;
+    outline: none;
+}
+
+.inventory-create-container .btn {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #1a2950 0%, #244a8a 100%);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    font-size: 1.08rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(46, 90, 172, 0.04);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.inventory-create-container .btn:disabled {
+    background: #c7d0e0;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.inventory-create-container .response-message {
+    margin-top: 22px;
+    text-align: center;
+    color: #2e5aac;
+    font-weight: 500;
+    font-size: 1.08rem;
+}
+
+/* Remove underline from the anchor tag styled as a button in the dashboard quick actions */
+.card-row.btn[routerLink] {
+    text-decoration: none;
+}
+
+.logo[routerLink],
+.tab[routerLink] {
+    text-decoration: none;
+}
