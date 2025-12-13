@@ -57,7 +57,7 @@ import { Router } from '@angular/router';
   styles: `
     .inventory-page {
       padding: 20px;
-      margin: 5rem;
+      margin: 3rem 0;
     }
     .inventory-page__table {
       width: 100%;
@@ -114,6 +114,8 @@ export class InventoryListComponent {
       }
     });
   }
+
+  // Function to delete an inventory item (Trash icon button)
   deleteInventory(itemId: number){
     if(!confirm('Are you sure you want to delete this inventory item?')){
       return;
@@ -134,11 +136,15 @@ export class InventoryListComponent {
       }
     });
   }
+
+  // Function to navigate to the update inventory page (Edit icon button)
   updateInventory(itemId: number) {
     this.router.navigate(['/inventory/update'], {
       queryParams: { itemId }
     });
   }
+
+  // Function to clear server messages after a delay
   private clearMessageAfterDelay(){
     setTimeout(() => {
       this.serverMessage = null;
