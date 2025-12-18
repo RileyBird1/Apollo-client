@@ -5,17 +5,87 @@
  */
 
 import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-supplier-search',
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet, RouterLink],
   template: `
-    <p>
-      supplier-search works!
-    </p>
+    <h3>Supplier Search</h3>
+    <h4>Choose Search Method:</h4>
+    <div class ="content-wrapper">
+        <div class="child-btn-group">
+          <a class="child-btn" routerLink="search/get-by-id" routerLinkActive="active">Search by ID</a>
+        
+        </div>
+        <section class="content-area" style="margin-top: 16px;">
+          <router-outlet></router-outlet>
+        </section>
+    </div>    
   `,
-  styles: ``
+  styles: `
+    h3{
+      margin: 20px 12px;
+      text-align: center;
+    }
+    h4{
+      margin-left: 12px;
+      text-align: center;
+    }
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+      gap: 24px;
+    }
+    h4{
+      margin-left: 12px;
+      text-align: center;
+    }
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+      gap: 24px;
+      margin-bottom: 10rem;
+    }
+    .child-btn-group {
+      display: flex;
+      flex-direction: column;
+      max-width: 250px;
+      padding: 1rem;
+      gap: 2rem;
+      margin: 12px;
+      border-right: 1px solid #ccc;
+    }
+    .child-btn {
+      padding: 12px 24px;
+      background-color: #244a8a;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .child-btn.active, .child-btn:hover {
+      background-color: #007bff;
+    }
+    .content-area {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      padding: 16px;
+      border-radius: 4px;
+      min-height: 200px;
+      
+    }
+  `
 })
 export class SupplierSearchComponent {
 
