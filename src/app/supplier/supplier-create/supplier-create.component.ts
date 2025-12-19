@@ -25,12 +25,12 @@ import { NgIf } from '@angular/common';
           <input id="supplierId" type="number" formControlName="supplierId" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" type="text" formControlName="name" class="form-control" />
+          <label for="supplierName">Name</label>
+          <input id="supplierName" type="text" formControlName="supplierName" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="contact">Contact</label>
-          <input id="contact" type="text" formControlName="contact" class="form-control" />
+          <label for="contactInformation">Contact</label>
+          <input id="contactInformation" type="text" formControlName="contactInformation" class="form-control" />
         </div>
         <div class="form-group">
           <label for="address">Address</label>
@@ -52,8 +52,8 @@ export class SupplierCreateComponent {
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.supplierForm = this.fb.group({
       supplierId: ['', [Validators.required, Validators.min(1)]],
-      name: ['', Validators.required],
-      contact: [''],
+      supplierName: ['', Validators.required],
+      contactInformation: [''],
       address: ['']
     });
   }
