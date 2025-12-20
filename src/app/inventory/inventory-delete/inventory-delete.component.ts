@@ -40,7 +40,7 @@ export class InventoryDeleteComponent {
     if (this.deleteForm.invalid) return;
     this.loading = true;
     const itemId = this.deleteForm.value.itemId;
-    this.http.delete(`http://localhost:3000/api/inventory/${itemId}`).subscribe({
+    this.http.delete(`${environment.apiUrl}/api/inventory/${itemId}`).subscribe({
       next: (res: any) => {
         this.responseMessage = res.message || 'Item deleted successfully.';
         this.loading = false;
