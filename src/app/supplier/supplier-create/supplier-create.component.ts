@@ -67,7 +67,7 @@ export class SupplierCreateComponent {
   onSubmit() {
     this.submitted = true;
     if (this.supplierForm.valid) {
-      this.http.post('http://localhost:3000/api/supplier', this.supplierForm.value).subscribe({
+      this.http.post(`${environment.apiUrl}/api/supplier`, this.supplierForm.value).subscribe({
         next: (res) => {
           this.responseMessage = 'Supplier created successfully!';
           this.supplierForm.reset();
