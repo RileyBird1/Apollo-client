@@ -4,7 +4,7 @@ import { InventoryService } from '../inventory.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { InventoryService } from '../inventory.service';
+
 
 @Component({
   selector: 'app-inventory-delete',

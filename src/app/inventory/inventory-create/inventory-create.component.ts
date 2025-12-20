@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InventoryService } from '../inventory.service';
 import { NgIf } from '@angular/common';
-import { InventoryService } from '../inventory.service';
+
 
 @Component({
   selector: 'app-inventory-create',
