@@ -78,7 +78,7 @@ export class InventoryCreateComponent {
     this.submitted = true;
     if (this.inventoryForm.valid) {
       // Send POST request to backend API
-      this.http.post('http://localhost:3000/api/inventory', this.inventoryForm.value).subscribe({
+      this.http.post(`${environment.apiUrl}/api/inventory`, this.inventoryForm.value).subscribe({
         next: (res) => {
           this.responseMessage = 'Inventory item created successfully!';
           this.inventoryForm.reset();
