@@ -11,19 +11,19 @@ export class InventoryService {
     constructor(private http: HttpClient) { }
 
     getInventories(){
-        return this.http.get<Inventory[]>(`${environment.apiBaseUrl}/api/inventory`);
+        return this.http.get<Inventory[]>(`${environment.apiBaseUrl}/inventory`);
     }
     getInventory(itemId: number){
-        return this.http.get<Inventory>(`${environment.apiBaseUrl}/api/inventory/${itemId}`);
+        return this.http.get<Inventory>(`${environment.apiBaseUrl}/inventory/${itemId}`);
     }
     addInventory(inventory: Inventory){
-        return this.http.post<Inventory>(`${environment.apiBaseUrl}/api/inventory`, inventory);
+        return this.http.post<Inventory>(`${environment.apiBaseUrl}/inventory`, inventory);
     }
     updateInventory(itemId: number, inventory: UpdateInventoryDTO){
-        return this.http.patch<Inventory>(`${environment.apiBaseUrl}/api/inventory/${itemId}`, inventory);
+        return this.http.patch<Inventory>(`${environment.apiBaseUrl}/inventory/${itemId}`, inventory);
     }
     deleteInventory(itemId: number){
-        return this.http.delete(`${environment.apiBaseUrl}/api/inventory/${itemId}`);
+        return this.http.delete(`${environment.apiBaseUrl}/inventory/${itemId}`);
     }
 }
 
