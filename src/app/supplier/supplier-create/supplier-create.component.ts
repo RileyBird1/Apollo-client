@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InventoryService } from '../inventory.service';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -49,7 +50,7 @@ export class SupplierCreateComponent {
   submitted = false;
   responseMessage = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private inventoryService: InventoryService, private fb: FormBuilder, private http: HttpClient) {
     this.supplierForm = this.fb.group({
       supplierId: ['', [Validators.required, Validators.min(1)]],
       supplierName: ['', Validators.required],
