@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-inventory-create',
@@ -60,7 +61,7 @@ export class InventoryCreateComponent {
   // Store API response or error
   responseMessage = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private inventoryService: InventoryService) {
     // Initialize the form with all required fields
     this.inventoryForm = this.fb.group({
       itemId: ['', [Validators.required, Validators.min(1)]],
@@ -78,7 +79,7 @@ export class InventoryCreateComponent {
     this.submitted = true;
     if (this.inventoryForm.valid) {
       // Send POST request to backend API
-      this.http.post('http://localhost:3000/api/inventory', this.inventoryForm.value).subscribe({
+      this.inventoryService.addInventory(this.inventoryForm.value).subscribe({
         next: (res) => {
           this.responseMessage = 'Inventory item created successfully!';
           this.inventoryForm.reset();

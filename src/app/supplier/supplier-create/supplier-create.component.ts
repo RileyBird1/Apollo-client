@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { SupplierService } from '../supplier.service';
 
 @Component({
   selector: 'app-supplier-create',
@@ -49,7 +50,7 @@ export class SupplierCreateComponent {
   submitted = false;
   responseMessage = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private supplierService: SupplierService,) {
     this.supplierForm = this.fb.group({
       supplierId: ['', [Validators.required, Validators.min(1)]],
       supplierName: ['', Validators.required],
@@ -67,7 +68,7 @@ export class SupplierCreateComponent {
   onSubmit() {
     this.submitted = true;
     if (this.supplierForm.valid) {
-      this.http.post('http://localhost:3000/api/supplier', this.supplierForm.value).subscribe({
+      this.supplierService.addSupplier(this.supplierForm.value).subscribe({
         next: (res) => {
           this.responseMessage = 'Supplier created successfully!';
           this.supplierForm.reset();
