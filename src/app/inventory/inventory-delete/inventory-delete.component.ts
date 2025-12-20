@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { InventoryService } from '../inventory.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -30,7 +31,7 @@ export class InventoryDeleteComponent {
   responseMessage = '';
   loading = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private inventoryService: InventoryService, private fb: FormBuilder, private http: HttpClient) {
     this.deleteForm = this.fb.group({
       itemId: ['', [Validators.required, Validators.min(1)]]
     });
