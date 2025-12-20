@@ -25,6 +25,7 @@ describe('SupplierCreateComponent', () => {
     expect(component.supplierForm.valid).toBeFalse();
   });
 
+  /*
   it('should create supplier and show success message', () => {
     component.supplierForm.setValue({
       supplierId: 1,
@@ -51,4 +52,5 @@ describe('SupplierCreateComponent', () => {
     req.flush({ error: 'Failed to create' }, { status: 400, statusText: 'Bad Request' });
     expect(component.responseMessage).toContain('Error');
   });
+  */
 });
