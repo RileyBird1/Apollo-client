@@ -4,6 +4,7 @@ import { InventoryService } from '../inventory.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-inventory-delete',
@@ -31,7 +32,7 @@ export class InventoryDeleteComponent {
   responseMessage = '';
   loading = false;
 
-  constructor(private inventoryService: InventoryService, private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private inventoryService: InventoryService) {
     this.deleteForm = this.fb.group({
       itemId: ['', [Validators.required, Validators.min(1)]]
     });
@@ -41,7 +42,7 @@ export class InventoryDeleteComponent {
     if (this.deleteForm.invalid) return;
     this.loading = true;
     const itemId = this.deleteForm.value.itemId;
-    this.http.delete(`${environment.apiUrl}/api/inventory/${itemId}`).subscribe({
+    this.inventoryService.deleteInventory(itemId).subscribe({
       next: (res: any) => {
         this.responseMessage = res.message || 'Item deleted successfully.';
         this.loading = false;
